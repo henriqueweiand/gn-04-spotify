@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     paddingTop: metrics.statusBarHeight,
     paddingHorizontal: metrics.baseMargin,
     height: metrics.navBarHeight + metrics.statusBarHeight,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.darker,
     flexDirection: 'row',
