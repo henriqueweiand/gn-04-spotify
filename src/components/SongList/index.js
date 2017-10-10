@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 
 /* Presentational */
 import { View, Text, FlatList, ActivityIndicator } from 'react-native';
-import SongItem from './components/SongItem';
+import SongItem from 'components/SongList/components/SongItem';
+
+/* Redux */
+import { connect } from 'react-redux';
+import PlayerActions from 'store/ducks/player';
 
 import styles from './styles';
 
-export default class SongList extends Component {
+export class SongList extends Component {
   static propTypes = {
     title: PropTypes.string,
     songs: PropTypes.arrayOf(
@@ -16,6 +20,7 @@ export default class SongList extends Component {
     ).isRequired,
     loading: PropTypes.bool,
     showTitle: PropTypes.bool,
+    playerSetSongRequest: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -39,7 +44,7 @@ export default class SongList extends Component {
         (Number.parseInt(index, 10) === 0) ? styles['listItem-first'] : {},
         (Number.parseInt(index, 10) === (this.props.songs.length)) ? styles['listItem-last'] : {},
       ]}
-      onPress={() => {}}
+      onPress={() => { this.props.playerSetSongRequest(item, this.props.songs); }}
       song={item}
     />
   );
@@ -69,3 +74,9 @@ export default class SongList extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  playerSetSongRequest: (song, list) => dispatch(PlayerActions.playerSetSongRequest(song, list)),
+});
+
+export default connect(null, mapDispatchToProps)(SongList);
