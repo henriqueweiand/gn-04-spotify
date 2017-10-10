@@ -7,6 +7,7 @@ import rootSaga from './sagas';
 import { reducer as trendingSongs } from './ducks/trending-songs';
 import { reducer as recommendedAlbums } from './ducks/recommended-albums';
 import { reducer as player } from './ducks/player';
+import { reducer as search } from './ducks/search';
 
 export default () => {
   const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ export default () => {
     trendingSongs,
     recommendedAlbums,
     player,
+    search,
   });
 
   return configureStore(rootReducer, rootSaga);
