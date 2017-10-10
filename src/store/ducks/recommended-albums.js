@@ -3,9 +3,9 @@ import { createReducer, createActions } from 'reduxsauce';
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  trendingRequest: null,
-  trendingSuccess: ['data'],
-  trendingFailure: null,
+  recommendedRequest: null,
+  recommendedSuccess: ['data'],
+  recommendedFailure: null,
 });
 
 export { Types };
@@ -38,7 +38,7 @@ export const failure = () => ({
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.TRENDING_REQUEST]: request,
-  [Types.TRENDING_SUCCESS]: success,
-  [Types.TRENDING_FAILURE]: failure,
+  [Types.RECOMMENDED_REQUEST]: request,
+  [Types.RECOMMENDED_SUCCESS]: success,
+  [Types.RECOMMENDED_FAILURE]: failure,
 });
